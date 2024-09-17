@@ -13,7 +13,7 @@ data rental_example;
         months_since_rented = intck('month', retrodte, Date_Rental);
     end;
     else do;
-        months_since_rented = intck('month', retrodte, Date_Rental) + 1;
+        months_since_rented = intck('month', retrodte, Date_Rental) - 1;
     end;
 
     /* Output the results */
