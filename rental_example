@@ -5,6 +5,9 @@ data rental_example;
     Date_Rental = '15SEP2023'd;  /* Date of rental */
     retrodte = '25AUG2023'd;     /* Retroactive date */
 
+    /* Initialize a variable to store months since rented */
+    months_since_rented = 0;
+
     /* Calculate months using intck and day comparison */
     if day(Date_Rental) >= day(retrodte) then do;
         months_since_rented = intck('month', retrodte, Date_Rental);
