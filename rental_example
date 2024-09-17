@@ -23,3 +23,20 @@ data rental_example;
     put "Day(retrodte): " day(retrodte);
     put "Months since rented: " months_since_rented;
 run;
+
+
+data test_dates;
+    format Date_Rental retrodte date9.;
+    Date_Rental = '15SEP2023'd;  /* Date of rental */
+    retrodte = '25AUG2023'd;     /* Retroactive date */
+
+    /* Extract days */
+    day_Date_Rental = day(Date_Rental);
+    day_retrodte = day(retrodte);
+
+    /* Output the results */
+    put "Date_Rental: " Date_Rental date9.;
+    put "retrodte: " retrodte date9.;
+    put "Day(Date_Rental): " day_Date_Rental;
+    put "Day(retrodte): " day_retrodte;
+run;
