@@ -1,0 +1,22 @@
+data rental_example;
+    format Date_Rental retrodte date9.;
+    
+    /* Sample dates */
+    Date_Rental = '15SEP2023'd;  /* 15th of September 2023 */
+    retrodte = '25AUG2023'd;     /* 25th of August 2023 */
+    
+    /* Using the DAY function to get day part of each date */
+    if day(Date_Rental) >= day(retrodte) then do;
+        months_since_rented = intck('month', Date_Rental, retrodte);
+    end;
+    else do;
+        months_since_rented = intck('month', Date_Rental, retrodte) + 1;
+    end;
+
+    /* Display results */
+    put "Date_Rental: " Date_Rental;
+    put "retrodte: " retrodte;
+    put "Day(Date_Rental): " day(Date_Rental);
+    put "Day(retrodte): " day(retrodte);
+    put "Months since rented: " months_since_rented;
+run;
